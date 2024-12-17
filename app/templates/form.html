@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Crear objetos en Fortigate</h1>
+  <form method="POST" action="/generate_mac_script">
+    {{ mac_form.hidden_tag() }}
+    <div>
+      {{ mac_form.data.label }}<br>
+      {{ mac_form.data(rows=10, cols=50, placeholder="Ejemplo: 90-B1-1C-60-EF-8F, 40-8D-5C-90-7C-62, 
+D8-5E-D3-C0-3E-EF...
+
+90:B1:1C:60-:F:8F, 40:8D:5C:90:7C:62, 
+D8:5E:D3:C0:3E:EF...
+
+90:B1:1C:60:1F:8F 
+40:8D:5C:90:7C:62
+D8:5E:D3:C0:3E:EF
+...
+") }}
+    </div>
+    <div>
+      <button type="submit" class="btn-submit">Script MAC</button>
+    </div>
+  </form>
+  <form method="POST" action="/generate_user_script">
+    {{ user_form.hidden_tag() }}
+    <div>
+      {{ user_form.users.label }}<br>
+      {{ user_form.users(rows=10, cols=50, placeholder="Ejemplo: 
+usuario1 contraseña1\nusuario2 contraseña2") }}
+    </div>
+    <div>
+      <button type="submit" class="btn-submit">Script Usuarios</button>
+    </div>
+  </form>
+  <form method="POST" action="/generate_ip_script">
+    {{ ip_form.hidden_tag() }}
+    <div>
+      {{ ip_form.ips.label }}<br>
+      {{ ip_form.ips(rows=10, cols=50, placeholder="Ejemplo: 
+192.168.1.1, 192.168.1.2,...
+
+192.168.1.1 
+192.168.1.2
+...
+") }}
+    </div>
+    <div>
+      <button type="submit" class="btn-submit">Script IP</button>
+    </div>
+  </form>
+{% endblock %}
